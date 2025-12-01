@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Include shared preferences -->
+    <include domain="sharedpref" path="."/>
+    <!-- Include internal storage -->
+    <include domain="file" path="."/>
+    <!-- Exclude device-specific settings -->
+    <exclude domain="sharedpref" path="device.xml"/>
+</full-backup-content>
