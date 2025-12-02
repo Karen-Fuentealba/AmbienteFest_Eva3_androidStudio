@@ -192,10 +192,10 @@ A continuación se describe cada endpoint, con método, URL y descripción
 - Jetpack Compose UI Test (androidx.compose.ui.test.junit4, declarado).
 
  ### tests principales :
-CartScreenTest — calcula y formatea total (subtotal - descuento + IVA).
-CartScreenTest — habilitación lógica del botón de checkout.
-CartViewModelTest — suma precios e IVA en ViewModel.
-CartItemCardTest — subtotal por item, ajustar cantidad, validar URL e imagen.
-CartTest — modelo del carrito: suma, descuentos, vacío y expiración. 
+- CartScreenTest — calcula y formatea total (subtotal - descuento + IVA).
+- CartScreenTest — habilitación lógica del botón de checkout.
+- CartViewModelTest — suma precios e IVA en ViewModel.
+- CartItemCardTest — subtotal por item, ajustar cantidad, validar URL e imagen.
+- CartTest — modelo del carrito: suma, descuentos, vacío y expiración. 
 
 ### Este proyecto fue desarrollado por Antonella Aedo y Karen Fuentealba.
