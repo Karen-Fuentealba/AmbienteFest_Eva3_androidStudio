@@ -83,7 +83,9 @@ fun PurchaseSummaryScreen(
                                 Spacer(modifier = Modifier.height(4.dp))
                                 Text("Método: ${p.payment_method ?: "-"}")
                                 Text("Estado: Aprobado")
-                                Text("Total Pagado: $${String.format(java.util.Locale.getDefault(), "%,.0f", p.total_amount ?: 0.0)}")
+                                val totalAmount = (p.total_amount ?: 0.0).toInt()
+                                val formattedTotal = totalAmount.toString().reversed().chunked(3).joinToString(".").reversed()
+                                Text("Total Pagado: $${formattedTotal}")
                             }
                         }
                     }
@@ -105,7 +107,9 @@ fun PurchaseSummaryScreen(
                                         Text(item.service_name ?: "Servicio", style = MaterialTheme.typography.titleMedium)
                                         Spacer(modifier = Modifier.height(4.dp))
                                         Text("Cantidad: ${item.quantity}")
-                                        Text("Subtotal: $${String.format(java.util.Locale.getDefault(), "%,.0f", item.subtotal)}")
+                                        val subtotal = item.subtotal.toInt()
+                                        val formattedSubtotal = subtotal.toString().reversed().chunked(3).joinToString(".").reversed()
+                                        Text("Subtotal: $${formattedSubtotal}")
                                         item.reservation?.let { r ->
                                             Spacer(modifier = Modifier.height(6.dp))
                                             Text("Reserva:")

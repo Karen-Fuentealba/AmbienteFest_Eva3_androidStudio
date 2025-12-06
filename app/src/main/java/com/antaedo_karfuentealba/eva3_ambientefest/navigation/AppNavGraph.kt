@@ -9,11 +9,17 @@ import com.antaedo_karfuentealba.eva3_ambientefest.ui.auth.SignupRoute
 import com.antaedo_karfuentealba.eva3_ambientefest.ui.auth.SplashRoute
 import com.antaedo_karfuentealba.eva3_ambientefest.ui.services.ServicesRoute
 import com.antaedo_karfuentealba.eva3_ambientefest.ui.admin.AdminHomeScreen
+import com.antaedo_karfuentealba.eva3_ambientefest.ui.admin.UserManagementScreen
+import com.antaedo_karfuentealba.eva3_ambientefest.ui.admin.ServiceManagementScreen
 import com.antaedo_karfuentealba.eva3_ambientefest.viewmodel.AuthViewModel
 import com.antaedo_karfuentealba.eva3_ambientefest.viewmodel.CartViewModel
+import com.antaedo_karfuentealba.eva3_ambientefest.viewmodel.UserManagementViewModel
+import com.antaedo_karfuentealba.eva3_ambientefest.viewmodel.ServiceManagementViewModel
 import com.antaedo_karfuentealba.eva3_ambientefest.ui.cart.CartRoute
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.antaedo_karfuentealba.eva3_ambientefest.data.repository.Graph
 import com.antaedo_karfuentealba.eva3_ambientefest.util.SessionDebugHelper
 import kotlinx.coroutines.launch
 
@@ -127,6 +133,28 @@ fun AppNavGraph(
             com.antaedo_karfuentealba.eva3_ambientefest.ui.cart.PurchaseSummaryScreen(
                 cartViewModel = cartViewModel,
                 onBack = { navController.navigate("home_user") { popUpTo("home_user") { inclusive = true } } }
+            )
+        }
+
+        composable("user_management") {
+            val userManagementViewModel: UserManagementViewModel = viewModel(
+                factory = UserManagementViewModel.Factory(Graph.userRepository)
+            )
+
+            UserManagementScreen(
+                navController = navController,
+                viewModel = userManagementViewModel
+            )
+        }
+
+        composable("service_management") {
+            val serviceManagementViewModel: ServiceManagementViewModel = viewModel(
+                factory = ServiceManagementViewModel.Factory(Graph.serviceRepository)
+            )
+
+            ServiceManagementScreen(
+                navController = navController,
+                viewModel = serviceManagementViewModel
             )
         }
     }

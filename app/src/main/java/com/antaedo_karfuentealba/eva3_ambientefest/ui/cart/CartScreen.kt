@@ -124,9 +124,13 @@ fun CartScreen(
 
                     // Resumen de compra
                     Column(modifier = Modifier.fillMaxWidth()) {
-                        Text("Total (sin IVA): $${String.format(Locale.getDefault(), "%.0f", totalBeforeIva)}", color = ColorContenido)
-                        Text("IVA (19%): $${String.format(Locale.getDefault(), "%.0f", totalBeforeIva * ivaRate)}", color = ColorContenido)
-                        Text("Total con IVA: $${String.format(Locale.getDefault(), "%.0f", totalWithIva)}", style = MaterialTheme.typography.titleLarge, color = ColorPrincipal)
+                        val totalSinIva = totalBeforeIva.toInt().toString().reversed().chunked(3).joinToString(".").reversed()
+                        val iva = (totalBeforeIva * ivaRate).toInt().toString().reversed().chunked(3).joinToString(".").reversed()
+                        val totalConIva = totalWithIva.toInt().toString().reversed().chunked(3).joinToString(".").reversed()
+
+                        Text("Total (sin IVA): $${totalSinIva}", color = ColorContenido)
+                        Text("IVA (19%): $${iva}", color = ColorContenido)
+                        Text("Total con IVA: $${totalConIva}", style = MaterialTheme.typography.titleLarge, color = ColorPrincipal)
 
                         Spacer(Modifier.height(12.dp))
 
@@ -284,7 +288,8 @@ private fun CartItemCard(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("Cantidad: ${item.quantity}", color = ColorContenido)
                     Spacer(Modifier.width(16.dp))
-                    Text("Subtotal: $${String.format(Locale.getDefault(), "%.0f", item.subtotal)}", color = ColorContenido)
+                    val formattedSubtotal = item.subtotal.toInt().toString().reversed().chunked(3).joinToString(".").reversed()
+                    Text("Subtotal: $${formattedSubtotal}", color = ColorContenido)
                 }
             }
 

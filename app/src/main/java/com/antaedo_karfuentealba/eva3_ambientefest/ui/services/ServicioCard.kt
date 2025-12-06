@@ -116,8 +116,8 @@ fun ServicioCard(
                     Text("(${servicio.num_ratings ?: 0})", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
                     
                     val price = servicio.price ?: 0.0
-                    val format = if (price % 1.0 == 0.0) "S/ %,.0f" else "S/ %,.2f"
-                    val formattedPrice = String.format(Locale.getDefault(), format, price)
+                    val intPrice = price.toInt()
+                    val formattedPrice = "$ ${intPrice.toString().reversed().chunked(3).joinToString(".").reversed()}"
 
                     Text(
                         text = formattedPrice,

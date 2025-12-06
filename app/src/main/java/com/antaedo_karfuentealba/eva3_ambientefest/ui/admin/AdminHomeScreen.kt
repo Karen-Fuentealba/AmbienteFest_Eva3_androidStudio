@@ -82,7 +82,7 @@ fun AdminHomeScreen(
             // Botón principal con ColorPrincipal
             Button(
                 onClick = {
-                    // TODO: Navegar a gestión de servicios
+                    navController?.navigate("service_management")
                 },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
@@ -98,7 +98,7 @@ fun AdminHomeScreen(
             // Botón secundario con ColorPrincipal
             Button(
                 onClick = {
-                    // TODO: Navegar a gestión de usuarios
+                    navController?.navigate("user_management")
                 },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(

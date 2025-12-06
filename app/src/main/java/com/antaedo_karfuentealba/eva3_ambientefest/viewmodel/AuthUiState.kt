@@ -23,7 +23,7 @@ data class AuthUiState(
     val errorMessage: String? = null,    // Mensajes de error para mostrar bajo los campos
     val infoMessage: String? = null,     // Mensajes de información / éxito
     val loggedIn: Boolean = false,
-    val welcomeMessage: String? = null,  // "Bienvenido, ... 🔐"
+    val welcomeMessage: String? = null,  // "Bienvenido, ... "
     val userId: Int? = null,
     val roleId: Int? = null,
     val registrationSuccess: Boolean = false // bandera para redirigir a Login

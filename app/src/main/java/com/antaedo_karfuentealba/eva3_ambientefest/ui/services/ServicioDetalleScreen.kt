@@ -175,8 +175,10 @@ fun ServicioDetalleScreen(
                     Spacer(Modifier.height(24.dp))
 
                     // Precio
+                    val price = servicio.price.toInt()
+                    val formattedPrice = "$${price.toString().reversed().chunked(3).joinToString(".").reversed()}"
                     Text(
-                        text = String.format(Locale("es", "CL"), "$%,.0f", servicio.price),
+                        text = formattedPrice,
                         style = MaterialTheme.typography.displaySmall,
                         color = Color.Black,
                         modifier = Modifier.fillMaxWidth(),
